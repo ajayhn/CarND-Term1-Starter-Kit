@@ -1,10 +1,11 @@
 #!/bin/bash
-set -e
+set -xe
 . activate carnd-term1
 
 if [ -z "$1" ]
   then
-    jupyter notebook 
+    jupyter nbextension enable --py --sys-prefix widgetsnbextension
+    jupyter notebook --allow-root
 elif [ "$1" == *".ipynb"* ]
   then
     jupyter notebook "$1"

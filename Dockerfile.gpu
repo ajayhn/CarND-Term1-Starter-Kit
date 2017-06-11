@@ -35,6 +35,10 @@ RUN conda clean -tp -y
 
 # Set up our notebook config.
 COPY jupyter_notebook_config.py /root/.jupyter/
+COPY config /root/.jupyter
+#RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
+COPY vim_binding /opt/conda/share/jupyter/nbextensions/vim_binding
+RUN chmod -R go-w /opt/conda/share/jupyter/nbextensions/vim_binding
 
 # Term 1 workdir
 RUN mkdir /src
